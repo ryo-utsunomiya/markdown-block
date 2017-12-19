@@ -4,7 +4,18 @@
   "description": "A Markdown block for WordPress Gutenberg editor.",
   "main": "index.js",
   "scripts": {
+    "build": "cross-env BABEL_ENV=default NODE_ENV=production webpack",
+    "dev": "cross-env BABEL_ENV=default webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.1",
+    "webpack": "^3.10.0"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 /* global wp */
-wp.blocks.registerBlockType('my-gutenberg-ext/hello-world', {
+wp.blocks.registerBlockType('markdown-block/markdown-block', {
     title: 'Markdown',
     icon: 'universal-access-alt', // todo: MD icon
     category: 'common',

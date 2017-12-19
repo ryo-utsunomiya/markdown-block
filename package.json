@@ -14,10 +14,10 @@
     "WordPress",
     "Gutenberg"
   ],
-  "author": "Ryo Utsunomiya (@ryo511)",
+  "author": "Ryo Utsunomiya",
   "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/ryo-utsunomiya/markdown-block/issues"
   },
-  "homepage": "https://github.com/ryo-utsunomiya/markdown-block#readme"
+  "homepage": "https://github.com/ryo-utsunomiya/markdown-block"
 }

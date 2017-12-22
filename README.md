@@ -11,4 +11,6 @@ A WordPress plugin that provides Markdown block for Gutenberg editor.
 # Installation
 
 1. [Download zip](https://github.com/ryo-utsunomiya/markdown-block/archive/master.zip)
-2. Use plugin uploader of your WordPress site.
+2. Go to upload plugin page of your WordPress site.
+3. Upload zip.
+

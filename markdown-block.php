@@ -9,6 +9,13 @@ Author URI: https://ryo511.info
 License: GPLv2
 */
 
+require_once dirname(__FILE__) . '/vendor/autoload.php';
+
+// Exit if accessed directry.
+if (!defined('ABS_PATH')) {
+    exit;
+}
+
 function markdown_block_enqueue_block_editor_assets()
 {
     wp_enqueue_script(
@@ -20,9 +27,18 @@ function markdown_block_enqueue_block_editor_assets()
 
 add_action('enqueue_block_editor_assets', 'markdown_block_enqueue_block_editor_assets');
 
-function render_markdown()
+function render_markdown($attributes)
 {
-    return "<div>todo: Convert Markdown to HTML</div>";
+    $markdown = '';
+
+    if (isset($attributes['content'])) {
+        // content is array of string
+        $markdown = implode("\n", $attributes['content']);
+    }
+
+    $parser = new \cebe\markdown\Markdown();
+
+    return $parser->parse($markdown);
 }
 
 register_block_type('markdown-block/markdown-block', array(

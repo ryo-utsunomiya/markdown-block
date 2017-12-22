@@ -31,10 +31,8 @@ add_action( 'enqueue_block_editor_assets', 'markdown_block_enqueue_block_editor_
 function render_markdown( $attributes ) {
 	$markdown = '';
 
-	if ( isset( $attributes['content'] ) ) {
-		$content = $attributes['content'];
-		// content is array of string.
-		foreach ( $content as $line ) {
+	if ( isset( $attributes['content'] ) && is_array( $attributes['content'] ) ) {
+		foreach ( $attributes['content'] as $line ) {
 			if ( is_string( $line ) ) {
 				$markdown .= $line;
 			}

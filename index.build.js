@@ -67,11 +67,35 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 /* global wp */
 var _wp$blocks = wp.blocks,
     registerBlockType = _wp$blocks.registerBlockType,
     Editable = _wp$blocks.Editable;
 
+/**
+ * Convert content into JSX.
+ * @param {array} content Gutenberg content.
+ * @returns {array} JSX rendered Gutenberg content.
+ */
+
+var toJSX = function toJSX(content) {
+	if (!Array.isArray(content)) {
+		return [];
+	}
+
+	return content.map(function (line) {
+		if (typeof line === 'string') {
+			return line;
+		}
+		if ((typeof line === 'undefined' ? 'undefined' : _typeof(line)) === 'object') {
+			if (line.type === 'br') {
+				return wp.element.createElement('br', null);
+			}
+		}
+	});
+};
 
 registerBlockType('markdown-block/markdown-block', {
 	title: 'Markdown',
@@ -88,17 +112,16 @@ registerBlockType('markdown-block/markdown-block', {
 		    focus = _ref.focus,
 		    setFocus = _ref.setFocus;
 
-		var onChangeContent = function onChangeContent(content) {
-			return setAttributes({ content: content });
+		var onChange = function onChange(content) {
+			setAttributes({ content: content });
 		};
 		return wp.element.createElement(Editable, {
-			onChange: onChangeContent,
-			value: attributes.content,
+			onChange: onChange,
+			value: toJSX(attributes.content),
 			focus: focus,
 			onFocus: setFocus
 		});
 	},
-
 	save: function save() {
 		return null;
 	}

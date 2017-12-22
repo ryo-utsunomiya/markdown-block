@@ -11,11 +11,6 @@ License: GPLv2
 
 require_once dirname(__FILE__) . '/vendor/autoload.php';
 
-// Exit if accessed directry.
-if (!defined('ABS_PATH')) {
-    exit;
-}
-
 function markdown_block_enqueue_block_editor_assets()
 {
     wp_enqueue_script(
@@ -32,11 +27,22 @@ function render_markdown($attributes)
     $markdown = '';
 
     if (isset($attributes['content'])) {
+        $content = $attributes['content'];
         // content is array of string
-        $markdown = implode("\n", $attributes['content']);
+        foreach ($content as $line) {
+            if (is_string($line)) {
+                $markdown .= $line;
+            }
+            if (is_array($line)) {
+                if (isset($line['type']) && $line['type'] === 'br') {
+                    $markdown .= "\n";
+                }
+            }
+        }
     }
 
-    $parser = new \cebe\markdown\Markdown();
+    // Use GitHub Flavored Markdown(MarkdownExtra)
+    $parser = new \cebe\markdown\MarkdownExtra();
 
     return $parser->parse($markdown);
 }

@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
+    'PHPCompatibility\\' => array($vendorDir . '/wimg/php-compatibility/PHPCompatibility'),
+    'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
 );

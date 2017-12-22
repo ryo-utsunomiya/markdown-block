@@ -11,12 +11,28 @@ class ComposerStaticInitf62d9b2e5c5054f3660cfcbac7939f84
         array (
             'cebe\\markdown\\' => 14,
         ),
+        'P' => 
+        array (
+            'PHPCompatibility\\' => 17,
+        ),
+        'D' => 
+        array (
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'PHPCompatibility\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wimg/php-compatibility/PHPCompatibility',
+        ),
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
     );
 
